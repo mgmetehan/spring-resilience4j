@@ -1,0 +1,19 @@
+resilience4j:
+  retry:
+    instances:
+      getRetry:
+        maxAttempts: 4
+        waitDuration: 2000ms
+        failAfterMaxAttempts: true
+        enable-exponential-backoff: true
+        exponential-backoff-multiplier: 2
+      customRetry:
+        maxAttempts: 5
+        waitDuration: 2s
+        failAfterMaxAttempts: true
+        enable-exponential-backoff: true
+        exponential-backoff-multiplier: 2
+        retry-exceptions:
+          - java.io.IOException
+        ignore-exceptions:
+          - java.lang.NullPointerException
